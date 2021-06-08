@@ -44,6 +44,6 @@ public class UsuarioService {
 			}
 		}
 		
-		return null;
+		return Optional.empty();
 	}
 }
