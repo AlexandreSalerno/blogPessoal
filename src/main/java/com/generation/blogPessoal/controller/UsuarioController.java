@@ -23,7 +23,7 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 	
-	@PostMapping("logar")
+	@PostMapping("/logar")
 	public ResponseEntity<UserLogin> autentication(@RequestBody Optional<UserLogin> user) {
 		return usuarioService.logar(user)
 				.map(resp -> ResponseEntity.ok(resp))
