@@ -45,11 +45,11 @@ public class TemaControllerTest {
 		if ((usuarioRepository.findByUsuario("email1").isEmpty())) {
 			usuarioService.cadastrarUsuario(usuario);
 		}
-		tema = new Tema("POO");
+		tema = new Tema("Teste - Post e Get");
 	}
 	
 	@Test
-	public void deveRealizarPostTema() {
+	public void post() {
 		HttpEntity<Tema> request = new HttpEntity<>(tema);
 		ResponseEntity<Tema> resposta = testRestTemplate
 				.withBasicAuth("email1", "123")
@@ -58,7 +58,7 @@ public class TemaControllerTest {
 	}
 	
 	@Test
-	public void deveMostrarTodosTemas () {
+	public void get() {
 		ResponseEntity<String> resposta = testRestTemplate
 				.withBasicAuth("email1", "123")
 				.exchange("/temas", HttpMethod.GET, null, String.class);

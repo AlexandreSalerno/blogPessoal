@@ -1,6 +1,5 @@
 package com.generation.blogPessoal.model;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Set;
@@ -27,32 +26,13 @@ class UsuarioTeste {
 
 	@BeforeEach
 	public void start() {
-		usuario = new Usuario("Ale", "123456789");
+		usuario = new Usuario("Ale", "123");
 	}
 
 	@Test
-	void testAtributosUsuario() {
+	void testAtributosPreenchidos() {
 		Set<ConstraintViolation<Usuario>> violacao = validator.validate(usuario);
 		System.out.println(violacao.toString());
 		assertTrue(violacao.isEmpty());
 	}
-
-	@Test
-	void testSenhaNula() {
-		Usuario usuarioSemSenha = new Usuario();
-		usuarioSemSenha.setUsuario("Maria1990");
-		Set<ConstraintViolation<Usuario>> violacao = validator.validate(usuarioSemSenha);
-		System.out.println(violacao.toString());
-		assertFalse(violacao.isEmpty());
-	}
-
-	@Test
-	void testUsuarioNulo() {
-		Usuario usuarioSemUsuario = new Usuario();
-		usuarioSemUsuario.setSenha("1123456789");
-		Set<ConstraintViolation<Usuario>> violacao = validator.validate(usuarioSemUsuario);
-		System.out.println(violacao.toString());
-		assertFalse(violacao.isEmpty());
-	}
-
 }
